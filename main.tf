@@ -38,3 +38,10 @@ resource "azurerm_app_service_plan" "qa_plan_appservice" {
     size = "S1"
   }
 }
+resource "azurerm_app_service" "dev-vishal-appservice" {
+  name                = "dev-vishal-appservice"
+  location            = azurerm_resource_group.rg_vishal_dev.location
+  resource_group_name = azurerm_resource_group.rg_vishal_dev.name
+  app_service_plan_id = azurerm_app_service_plan.dev_plan_appservice.id
+
+}
