@@ -52,11 +52,17 @@ resource "azurerm_app_service" "qa-vishal-appservice" {
   app_service_plan_id = azurerm_app_service_plan.qa_plan_appservice.id
 
 }
-resource "azurerm_storage_account" "vishal_dev_storageacc" {
-  name                     = "vishal_dev_storageacc"
+resource "azurerm_storage_account" "vishaldevstorageacc" {
+  name                     = "vishaldevstorageacc"
   resource_group_name      = azurerm_resource_group.rg_vishal_dev.name
   location                 = azurerm_resource_group.rg_vishal_dev.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
 }
-
+resource "azurerm_storage_account" "vishalqastorageacc" {
+  name                     = "vishalqastorageacc"
+  resource_group_name      = azurerm_resource_group.rg_vishal_qa.name
+  location                 = azurerm_resource_group.rg_vishal_qa.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+}
