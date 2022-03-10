@@ -30,8 +30,8 @@ resource "azurerm_app_service_plan" "dev_plan_appservice" {
 }
 resource "azurerm_app_service_plan" "qa_plan_appservice" {
   name                = "qa_plan_appservice"
-  location            = azurerm_resource_group.rg_aquib_qa.location
-  resource_group_name = azurerm_resource_group.rg_aquib_qa.name
+  location            = azurerm_resource_group.rg_vishal_qa.location
+  resource_group_name = azurerm_resource_group.rg_vishal_qa.name
 
   sku {
     tier = "Standard"
@@ -45,3 +45,18 @@ resource "azurerm_app_service" "dev-vishal-appservice" {
   app_service_plan_id = azurerm_app_service_plan.dev_plan_appservice.id
 
 }
+resource "azurerm_app_service" "qa-vishal-appservice" {
+  name                = "qa--appservicee"
+  location            = azurerm_resource_group.rg_vishal_qa.location
+  resource_group_name = azurerm_resource_group.rg_vishal_qa.name
+  app_service_plan_id = azurerm_app_service_plan.qa_plan_appservice.id
+
+}
+resource "azurerm_storage_account" "vishal_dev_storageacc" {
+  name                     = "vishal_dev_storageacc"
+  resource_group_name      = azurerm_resource_group.rg_vishal_dev.name
+  location                 = azurerm_resource_group.rg_vishal_dev.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+}
+
